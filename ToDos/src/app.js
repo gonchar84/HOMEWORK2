@@ -1,13 +1,78 @@
 // массив задач
-const todos = [
-  { name: 'task1', key: 1, status: "overdue" },
-  { name: 'task2', key: 2, status: "overdue" },
-  { name: 'task3', key: 3, status: "done" },
-  { name: 'task4', key: 4, status: "active" },
-  { name: 'task5', key: 5, status: "active" },
-  { name: 'task6', key: 6, status: "active" },
-  { name: 'task7', key: 7, status: "active" },
-];
+import tasks from './components/tasks'
+import bar from './components/bar'
+
+tasks.add({ name: 'task1', key: 1, status: "overdue" })
+tasks.add({ name: 'task2', key: 2, status: "overdue" })
+tasks.add({ name: 'task3', key: 3, status: "done" })
+tasks.add({ name: 'task4', key: 4, status: "active" })
+tasks.add({ name: 'task5', key: 5, status: "active" })
+
+// console.log (tasks)
+
+// let obj = {
+// a: 'a',
+// say: function () {
+//   console.log(this.a)
+// }
+
+// }
+// let obj2 = {
+//   a: 'b',
+// }
+// obj.say.call(obj2)
+
+
+
+
+
+
+
+// const todos = [
+//   { name: 'task1', key: 1, status: "overdue" },
+//   { name: 'task2', key: 2, status: "overdue" },
+//   { name: 'task3', key: 3, status: "done" },
+//   { name: 'task4', key: 4, status: "active" },
+//   { name: 'task5', key: 5, status: "active" },
+//   { name: 'task6', key: 6, status: "active" },
+//   { name: 'task7', key: 7, status: "active" },
+// ];
+
+class App {
+  bar = {};
+  list = {};
+
+  constructor(bar, list) {
+this.bar = bar;
+this.tasks = tasks;
+
+this.bar.callback = this.setFilter
+  }
+
+setFilter(name)
+{
+  this.bar.filter = name;
+  this.render();
+}
+
+
+  render()
+  {
+    let items = this.tasks.get();
+    this.bar.render(items.length)
+
+  }
+}
+(new App(bar, tasks, {})).render();
+
+return
+
+
+
+
+
+
+
 
 window.todos = todos;
 
@@ -47,7 +112,7 @@ const renderList = function () {
   // цикл - todos
   for (let i = 0; i < todosList.length; i++) {
 
-        let todo = todosList[i]; // помещаем задачу в переменную { name: 'task1', key: 1, status: 'overdue' }
+    let todo = todosList[i]; // помещаем задачу в переменную { name: 'task1', key: 1, status: 'overdue' }
 
     // создаем теги
     let li = document.createElement("li");
@@ -100,7 +165,7 @@ const renderList = function () {
     // добавляем событие когда курсор уходит с элемента
     li.onmouseout = function () {
       // удаляем рамку
-    li.style.border = ""
+      li.style.border = ""
     }
 
     // вставляем таг

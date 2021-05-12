@@ -1,13 +1,13 @@
 class Human {
     year;
     pol;
-    nationality;
-
-    experience(year) {
-        console.log('experience' + year);
-    }
+    nationality;   
 
     work() {
+
+    }
+
+    relax() {
 
     }
 
@@ -19,7 +19,14 @@ class Human {
 class Employer extends Human {
     subordinates;
     wages;
-    office
+    office;
+    constructor() {
+        super();
+    }
+
+    experience(year) {
+        console.log('experience' + year);
+    }
 
     lead(number) {
         console.log(`subordinates ${number} is worked`);
@@ -29,18 +36,16 @@ class Employer extends Human {
 
     }
 
-    shout() {
-        console.log('Loudly');
-    }
+    
 }
 
 class Engineer extends Employer {
     constructor(params) {
         super();
         let { year, pol, nationality } = params;
-        this.year = year;
-        this.pol = pol;
-        this.nationality = nationality;
+        this.year = 32;
+        this.pol = M;
+        this.nationality = BR;
     }
     draw() {
 
@@ -49,8 +54,8 @@ class Engineer extends Employer {
 
     }
 
-    count() {
-        
+    shout() {
+        console.log('Loudly');
     }
 
 }
@@ -58,9 +63,9 @@ class Tester extends Employer {
     constructor(params) {
         super();
         let { year, pol, nationality } = params;
-        this.year = year;
-        this.pol = pol;
-        this.nationality = nationality;
+        this.year = 25;
+        this.pol = M;
+        this.nationality = UKR;
     }
     testIt() {
 
